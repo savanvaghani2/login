@@ -20,6 +20,10 @@ class _SalaryScreenState extends State<SalaryScreen> {
           color: Colors.white,
           size: 30,
         ),
+
+
+
+        
         title: const Text(
           "Income Counter",
           style: TextStyle(
