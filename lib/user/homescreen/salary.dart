@@ -23,7 +23,9 @@ class _SalaryScreenState extends State<SalaryScreen> {
 
 
 
-        
+
+
+
         title: const Text(
           "Income Counter",
           style: TextStyle(
