@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SalaryScreen extends StatefulWidget {
   const SalaryScreen({Key? key}) : super(key: key);
@@ -49,6 +50,40 @@ class _SalaryScreenState extends State<SalaryScreen> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                   child: ListTile(
+                      onTap: () => Get.defaultDialog(contentPadding: EdgeInsets.all(15),middleText: "Payment Details",
+                              actions: [
+                                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Date :",style: TextStyle(fontWeight: FontWeight.bold),),
+                                        Text("Salary Date :"),
+                                        Text("Total Days :"),
+                                        Text("Work Days :"),
+                                        Text("leave Days :",style: TextStyle(fontWeight: FontWeight.bold),),
+                                        Text("Petrol Allowance :"),
+                                        Text("Other Allowance :"),
+                                      ],
+                                    ),
+                                    Column(crossAxisAlignment:CrossAxisAlignment.end,
+                                      children: [
+                                        Text("29/05/2022",style: TextStyle(fontWeight: FontWeight.bold),),
+                                        Text("30/06/2022"),
+                                        Text("30"),
+                                        Text("20"),
+                                        Text("6",style: TextStyle(fontWeight: FontWeight.bold),),
+                                        Text("500"),
+                                        Text("200"),
+                                      ],
+                                    )
+                                  ],
+                                )
+                              ],
+                              
+                              title: "",
+                              middleTextStyle: 
+                                  TextStyle(fontWeight: FontWeight.bold),
+                                  ),
                       contentPadding: EdgeInsets.all(10),
                       tileColor: Colors.blueAccent.withOpacity(0.2),
                       shape: RoundedRectangleBorder(
