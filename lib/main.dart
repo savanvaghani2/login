@@ -57,7 +57,6 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-// ignore: use_key_in_widget_constructors
 class HandlerScreen extends StatelessWidget {
   final PageViewController _controller = Get.put(PageViewController());
   @override

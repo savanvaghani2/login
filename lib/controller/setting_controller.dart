@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Setting_Controller extends GetxController {
   RxString did = "".obs;
   int a = 0;
+
   Photo() async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
     FirebaseStorage _ref = FirebaseStorage.instance;
