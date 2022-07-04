@@ -61,31 +61,34 @@ class _SalaryScreenState extends State<SalaryScreen> {
                         width: 264,
                         child: Row(
                           children: [
-                            ButtonBar(
-                              children: [
-                                Radio(
-                                    activeColor: Colors.green,
-                                    value: "Cash",
-                                    groupValue: _salarycontroller.colorgrpv,
-                                    onChanged: (val) {
-                                      setState(() {
-                                        _salarycontroller.colorgrpv = val;
+                            Obx(() {
+                              return ButtonBar(
+                                children: [
+                                  Radio(
+                                      activeColor: Colors.green,
+                                      value: "Cash",
+                                      groupValue:
+                                          _salarycontroller.colorgrpv.value,
+                                      onChanged: (String? val) {
+                                        _salarycontroller.colorgrpv.value =
+                                            val!;
                                         print(_salarycontroller.colorgrpv);
-                                      });
-                                    }),
-                                const Text("Cash"),
-                                Radio(
-                                    activeColor: Colors.green,
-                                    value: "Online",
-                                    groupValue: _salarycontroller.colorgrpv,
-                                    onChanged: (val) {
-                                      _salarycontroller.colorgrpv = val;
-                                      print(_salarycontroller.colorgrpv);
-                                      setState(() {});
-                                    }),
-                                const Text("Online")
-                              ],
-                            )
+                                      }),
+                                  const Text("Cash"),
+                                  Radio(
+                                      activeColor: Colors.green,
+                                      value: "Online",
+                                      groupValue:
+                                          _salarycontroller.colorgrpv.value,
+                                      onChanged: (String? val) {
+                                        _salarycontroller.colorgrpv.value =
+                                            val!;
+                                        print(_salarycontroller.colorgrpv);
+                                      }),
+                                  const Text("Online")
+                                ],
+                              );
+                            })
                           ],
                         )),
                   ),
@@ -97,14 +100,15 @@ class _SalaryScreenState extends State<SalaryScreen> {
                       _salarycontroller.transaction.add({
                         'amount': amount.text,
                         'spends': spendname.text,
-                        'paymenttype': _salarycontroller.colorgrpv
+                        'paymenttype': _salarycontroller.colorgrpv.value,
+                        'date': DateTime.now()
                       });
 
                       Get.back();
                     },
                     child: const Text(
                       "Done",
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 17),
@@ -158,11 +162,11 @@ class _SalaryScreenState extends State<SalaryScreen> {
                     onChanged: (String? newValue) {
                       _salarycontroller.dropdownvalue.value =
                           newValue.toString();
+                      _salarycontroller.sortingData();
                     },
                     items: _salarycontroller.items
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem(
-                        onTap: () => print(value),
                         value: value,
                         child: Text(value),
                       );
@@ -182,11 +186,10 @@ class _SalaryScreenState extends State<SalaryScreen> {
                       child: Obx(
                         () => ListView.builder(
                             physics: const BouncingScrollPhysics(),
-                            itemCount: _salarycontroller.transaction.length,
+                            itemCount: _salarycontroller.sorted.length,
                             itemBuilder: (BuildContext, int) {
-                              print(_salarycontroller.transaction.length);
-                              if (_salarycontroller.transaction.length !=
-                                  null) {
+                              print(_salarycontroller.sorted.length);
+                              if (_salarycontroller.sorted.length != null) {
                                 return Padding(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 4),
@@ -208,13 +211,13 @@ class _SalaryScreenState extends State<SalaryScreen> {
                                             color: Colors.red.withOpacity(0.5)),
                                       ),
                                       title: Text(
-                                          "${_salarycontroller.transaction[int]['spends'].toString().capitalize} - ${_salarycontroller.transaction[int]['paymenttype']}"),
+                                          "${_salarycontroller.sorted[int]['spends'].toString().capitalize} - ${_salarycontroller.sorted[int]['paymenttype']}"),
                                       subtitle: Text(
                                         "${DateTime.now().toString().substring(0, 10)} , ${DateTime.now().toString().substring(10, 19)}",
                                         style: const TextStyle(fontSize: 15),
                                       ),
                                       trailing: Text(
-                                        "₹ ${_salarycontroller.transaction[int]['amount']}",
+                                        "₹ ${_salarycontroller.sorted[int]['amount']}",
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 17),
