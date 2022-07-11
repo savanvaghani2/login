@@ -42,7 +42,7 @@ class _UserSettingPageState extends State<UserSettingPage> {
               fontWeight: FontWeight.bold,
               letterSpacing: 1),
         ),
-        backgroundColor: Colors.blue.withOpacity(0.6),
+        backgroundColor: Colors.blue,
       ),
       resizeToAvoidBottomInset: true,
       extendBody: true,

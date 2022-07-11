@@ -20,6 +20,8 @@ class _SalaryScreenState extends State<SalaryScreen> {
       resizeToAvoidBottomInset: false,
       floatingActionButton: FloatingActionButton(
           onPressed: () {
+            amount.clear();
+            spendname.clear();
             Get.defaultDialog(
               title: "personal Allowance",
               content: StatefulBuilder(builder: (context, setState) {
@@ -136,7 +138,7 @@ class _SalaryScreenState extends State<SalaryScreen> {
               fontWeight: FontWeight.bold,
               letterSpacing: 1),
         ),
-        backgroundColor: Colors.blue.withOpacity(0.6),
+        backgroundColor: Colors.blue,
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),

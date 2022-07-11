@@ -25,16 +25,25 @@ class _UserHomePageState extends State<UserHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(backgroundColor: Colors.blue.withOpacity(0.6),
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
         elevation: 5,
-        centerTitle: true,
         leading: const Icon(
-          Icons.timer_sharp,
+          Icons.list,
           color: Colors.white,
           size: 30,
         ),
+        actions: [
+          Icon(
+            Icons.account_circle_outlined,
+            size: 30,
+          ),
+          SizedBox(
+            width: 10,
+          )
+        ],
         title: const Text(
-          "Work Timer",
+          "Time Counter",
           style: TextStyle(
               color: Colors.white,
               fontSize: 20,

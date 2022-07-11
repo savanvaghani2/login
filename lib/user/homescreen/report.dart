@@ -44,7 +44,7 @@ class _ReportScreenState extends State<ReportScreen> {
               fontWeight: FontWeight.bold,
               letterSpacing: 1),
         ),
-        backgroundColor: Colors.blue.withOpacity(0.6),
+        backgroundColor: Colors.blue,
       ),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
@@ -63,6 +63,7 @@ class _ReportScreenState extends State<ReportScreen> {
               activeBackgroundDayColor: Colors.blueAccent.shade100,
               dotsColor: Colors.black,
               locale: 'en_ISO',
+
             ),
             Expanded(
               child: Container(
